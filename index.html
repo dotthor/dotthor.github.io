@@ -1,1 +1,24 @@
-Ciao Benny.
+<!DOCTYPE html>
+<html>
+  <body>
+    <h1>My First Heading</h1>
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <script>
+      function handleCredentialResponse(response) {
+        console.log("Encoded JWT ID token: " + response.credential);
+      }
+      window.onload = function () {
+        google.accounts.id.initialize({
+          client_id: "978338114182-enq0agcv7q3g8akhnag7u8ongjih103v.apps.googleusercontent.com",
+          callback: handleCredentialResponse,
+        });
+        google.accounts.id.renderButton(
+          document.getElementById("buttonDiv"),
+          { theme: "outline", size: "large" } // customization attributes
+        );
+        google.accounts.id.prompt(); // also display the One Tap dialog
+      };
+    </script>
+    <div id="buttonDiv"></div>
+  </body>
+</html>
